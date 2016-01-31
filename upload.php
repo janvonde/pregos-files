@@ -797,7 +797,6 @@ $stmt = $db->prepare('SELECT filename,randname,validuntil,password,owner FROM fi
 $stmt->execute();
 $result = $stmt->fetchAll();
 
-if (!empty($result)) {
 ?>
       <div role="tabpanel" class="tab-pane" style="border-left: 1px solid #dddddd; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; padding: 10px;" id="files">
       <div class="panel panel-default">
@@ -814,6 +813,7 @@ if (!empty($result)) {
             <tbody>
 
 <?php
+if (!empty($result)) {
 	foreach ($result as $file) {
 		echo "
               <tr>
@@ -835,13 +835,13 @@ if (!empty($result)) {
                 <td> " . $file['owner'] . "</td>
               </tr>";
 	}
+}
 	echo "
             </tbody>
 	  </table>
 	</div>
 	</div>
 	</div>";
-}
 }
 ?>
     <div role="tabpanel" class="tab-pane" style="border-left: 1px solid #dddddd; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; padding: 10px;" id="info">
