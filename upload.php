@@ -668,10 +668,10 @@ if (!empty($result)) {
 	foreach ($result as $file) {
 		echo "
               <tr>
-                <td> <i class=\"fa " . getFaIcon($file['filename']) . "\"style=\"display:table-cell;\"></i> <a style=\"display:table-cell;\"href=\"" . dirname(curPageUrl()) . "/" . $file['randname'] . "\" target=\"_blank\">" . $file['filename'] . "</a>";
+                <td> <i class=\"fa " . getFaIcon($file['filename']) . "\"style=\"display:table-cell;\"></i> <a style=\"display:table-cell;\"href=\"" . dirname(curPageUrl()) . "/" . $file['randname'] . "\" target=\"_blank\">" . $file['filename'] . "</a> <span style=\"display:table-cell; color:#bbb; padding-left:5px;\"> (" . human_filesize(filesize($conf['datadir'] . "/" . $file['randname'])) . ")</span>";
 	
 	        if ($file['password'] != '') {
-	                echo " &nbsp; <i class=\"fa fa-key\"> </i>";
+	                echo " <i class=\"fa fa-key\" style=\"display:table-cell; color:#bbb;\"> </i>";
 	        }
 	
 		echo "</td>
@@ -832,7 +832,7 @@ if (!empty($result)) {
 	foreach ($result as $file) {
 		echo "
               <tr>
-	      <td> <i class=\"fa " . getFaIcon($file['filename']) . "\" style=\"display:table-cell;\"></i> <a style=\"display:table-cell;\" href=\"" . dirname(curPageUrl()) . "/" . $file['randname'] . "\" target=\"_blank\">" . $file['filename'] . "</a>";
+	      <td> <i class=\"fa " . getFaIcon($file['filename']) . "\" style=\"display:table-cell;\"></i> <a style=\"display:table-cell;\" href=\"" . dirname(curPageUrl()) . "/" . $file['randname'] . "\" target=\"_blank\">" . $file['filename'] . "</a> <span style=\"display:table-cell; color:#bbb; padding-left:5px;\"> (" . human_filesize(filesize($conf['datadir'] . "/" . $file['randname'])) . ")</span>";
 	
 	        if ($file['password'] != '') {
 	                echo " &nbsp; <i class=\"fa fa-key\"> </i>";
