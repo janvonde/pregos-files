@@ -42,7 +42,7 @@ function sendEmailNotification($file,$mailto) {
         $headers = "From: " . $conf['mailfrom'] . "\r\nReply-To: "  . $conf['mailreplyto'];
         $headers .= "\r\nMIME-Version: 1.0";
         $headers .= "\r\nContent-Type: text/plain; charset=UTF-8";
-        $headers .= "\r\nContent-Transfer-Encoding: quoted-printable";
+//        $headers .= "\r\nContent-Transfer-Encoding: quoted-printable";
 
 
         //define the body of the message.
