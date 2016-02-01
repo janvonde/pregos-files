@@ -351,4 +351,53 @@ function fileMaintenance() {
 		}
 	}
 }
+
+
+
+function getFaIcon($filename) {
+
+        // default value 
+        $faIconClass = "fa-file-o";
+
+        // file extension
+        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+        // mapping from extension to font-awesome icon class
+        if ($ext == "php" OR $ext == "sh") {
+                $faIconClass = "fa-file-code-o";
+        }
+        elseif ($ext == "mov" OR $ext == "mp3") {
+                $faIconClass = "fa-file-video-o ";
+        }
+        elseif ($ext == "wav" OR $ext == "mp3") {
+                $faIconClass = "fa-file-video-o ";
+        }
+        elseif ($ext == "rar" OR $ext == "zip") {
+                $faIconClass = "fa-file-archive-o ";
+        }
+        elseif ($ext == "jpg" OR $ext == "jpeg" OR $ext == "png" OR $ext == "gif") {
+                $faIconClass = "fa-file-image-o ";
+        }
+        elseif ($ext == "ppt" OR $ext == "pptx") {
+                $faIconClass = "fa-file-powerpoint-o ";
+        }
+        elseif ($ext == "doc" OR $ext == "docx") {
+                $faIconClass = "fa-file-word-o ";
+        }
+        elseif ($ext == "xls" OR $ext == "xlsx") {
+                $faIconClass = "fa-file-excel-o ";
+        }
+        elseif ($ext == "txt" OR $ext == "xml") {
+                $faIconClass = "fa-file-text-o ";
+        }
+        elseif ($ext == "pdf") {
+                $faIconClass = "fa-file-pdf-o ";
+        }
+
+        // return value
+        return $faIconClass;
+}
+
+
+
 ?>

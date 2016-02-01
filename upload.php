@@ -515,21 +515,21 @@ header('Content-Type: text/html;charset=utf-8');
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
 <style type="text/css">
-.alert-messages {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-}
-.fa {
-  padding: 3px 5px;
-}
+  .alert-messages {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
 
-.fa-user-secret, .fa-info-circle {
-  color: #bbb;
-}
+  .fa {
+    padding: 3px 5px;
+  }
 
+  .fa-user-secret, .fa-info-circle {
+    color: #bbb;
+  }
 </style>
 
 </head>
@@ -668,7 +668,7 @@ if (!empty($result)) {
 	foreach ($result as $file) {
 		echo "
               <tr>
-                <td> <a href=\"" . dirname(curPageUrl()) . "/" . $file['randname'] . "\" target=\"_blank\">" . $file['filename'] . "</a>";
+                <td> <i class=\"fa " . getFaIcon($file['filename']) . "\"style=\"display:table-cell;\"></i> <a style=\"display:table-cell;\"href=\"" . dirname(curPageUrl()) . "/" . $file['randname'] . "\" target=\"_blank\">" . $file['filename'] . "</a>";
 	
 	        if ($file['password'] != '') {
 	                echo " &nbsp; <i class=\"fa fa-key\"> </i>";
@@ -832,7 +832,7 @@ if (!empty($result)) {
 	foreach ($result as $file) {
 		echo "
               <tr>
-                <td> <a href=\"" . dirname(curPageUrl()) . "/" . $file['randname'] . "\" target=\"_blank\">" . $file['filename'] . "</a>";
+	      <td> <i class=\"fa " . getFaIcon($file['filename']) . "\" style=\"display:table-cell;\"></i> <a style=\"display:table-cell;\" href=\"" . dirname(curPageUrl()) . "/" . $file['randname'] . "\" target=\"_blank\">" . $file['filename'] . "</a>";
 	
 	        if ($file['password'] != '') {
 	                echo " &nbsp; <i class=\"fa fa-key\"> </i>";
