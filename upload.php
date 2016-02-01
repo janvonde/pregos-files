@@ -240,6 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			// user feedback
 			$_SESSION['message']['type'] = "success";
 			$_SESSION['message']['message'] = "Successfully deleted the user account: '" . $username;
+			$_SESSION['activetab'] = "users";
 
 
 			// send back to refering site
@@ -273,6 +274,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			// user feedback
 			$_SESSION['message']['type'] = "success";
 			$_SESSION['message']['message'] = "Successfully granted admin rights to '" . $username;
+			$_SESSION['activetab'] = "users";
 
 
 			// send back to refering site
@@ -306,6 +308,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			// user feedback
 			$_SESSION['message']['type'] = "success";
 			$_SESSION['message']['message'] = "Successfully revoked admin rights from '" . $username;
+			$_SESSION['activetab'] = "users";
 
 
 			// send back to refering site
@@ -441,6 +444,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (!isset($_POST['username']) OR $_POST['username'] == "" OR !isset($_POST['password']) OR $_POST['password'] == "" OR !isset($_POST['email']) OR $_POST['email'] == "") {
 			$_SESSION['message']['type'] = "danger";
 			$_SESSION['message']['message'] = "Please insert all mandatory information.";
+			$_SESSION['activetab'] = "users";
 			header('Location: ' . basename($_SERVER['HTTP_REFERER']));
 			exit;
 		}
@@ -448,6 +452,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if (! isValidEmail($_POST['email'])) {
 			$_SESSION['message']['type'] = "danger";
 			$_SESSION['message']['message'] = "The given email address is not valid.";
+			$_SESSION['activetab'] = "users";
 			header('Location: ' . basename($_SERVER['HTTP_REFERER']));
 			exit;
 		}
@@ -455,6 +460,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if (! isUniqUsername($_POST['username'])) {
 			$_SESSION['message']['type'] = "danger";
 			$_SESSION['message']['message'] = "The username already exists.";
+			$_SESSION['activetab'] = "users";
 			header('Location: ' . basename($_SERVER['HTTP_REFERER']));
 			exit;
 		}
@@ -479,6 +485,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// user feedback
 			$_SESSION['message']['type'] = "success";
 			$_SESSION['message']['message'] = "Successfully created user '" . $username;
+			$_SESSION['activetab'] = "users";
 
 
 
@@ -565,11 +572,15 @@ if(isset($_SESSION['message']['type']) && $_SESSION['message']['type'] != "") {
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="outline: 0;">Home</a></li>
+    <li role="presentation" <?php if(!isset($_SESSION['activetab'])) { echo "class=\"active\""; }?>><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="outline: 0;">Home</a></li>
 <?php
 if ($iamadmin == 1) {
 	echo "
-		<li role=\"presentation\"><a href=\"#users\" aria-controls=\"users\" role=\"tab\" data-toggle=\"tab\" style=\"outline: 0;\">Users</a></li>\n
+		<li role=\"presentation\"";
+ 	if(isset($_SESSION['activetab']) && $_SESSION['activetab'] == "users") { 
+		echo "class=\"active\""; 
+	}	
+	echo "><a href=\"#users\" aria-controls=\"users\" role=\"tab\" data-toggle=\"tab\" style=\"outline: 0;\">Users</a></li>\n
 		<li role=\"presentation\"><a href=\"#files\" aria-controls=\"files\" role=\"tab\" data-toggle=\"tab\" style=\"outline: 0;\">Files</a></li>";
 }
 ?>
@@ -577,7 +588,7 @@ if ($iamadmin == 1) {
     </ul>
 
     <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" style="border-left: 1px solid #dddddd; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; padding: 10px;" id="home">
+    <div role="tabpanel" class="tab-pane<?php if(!isset($_SESSION['activetab'])) { echo " active"; }?>" style="border-left: 1px solid #dddddd; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; padding: 10px;" id="home">
     <div class="panel panel-default">
       <div class="panel-heading">Upload</div>
         <div class="panel-body">
@@ -694,7 +705,7 @@ if ($iamadmin == 1) {
 	
 	if (!empty($result)) {
 ?>
-      <div role="tabpanel" class="tab-pane" style="border-left: 1px solid #dddddd; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; padding: 10px;" id="users">
+	<div role="tabpanel" class="tab-pane<?php if(isset($_SESSION['activetab']) && $_SESSION['activetab'] == "users") { echo " active"; unset($_SESSION['activetab']); } ?>" style="border-left: 1px solid #dddddd; border-right: 1px solid #dddddd; border-bottom: 1px solid #dddddd; padding: 10px;" id="users">
       <div class="panel panel-default">
         <div class="panel-heading">User</div>
         <div class="panel-body">
