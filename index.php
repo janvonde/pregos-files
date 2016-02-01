@@ -138,8 +138,8 @@ header('Content-Type: text/html;charset=utf-8');
 
 <div class="container-fluid">
 <div class="row">
-  <div class="col-md-3"> </div>
-    <div class="col-md-6">
+  <div class="col-md-2"> </div>
+    <div class="col-md-8">
 <?php
 // show error or success messages
 if(isset($_SESSION['message']['type']) && $_SESSION['message']['type'] != "") {
@@ -194,7 +194,7 @@ else {
 ?>
       </div>
     </div>
-    <div class="col-md-3"> </div>
+    <div class="col-md-2"> </div>
   </div>
   </div>
 </body>

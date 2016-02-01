@@ -523,9 +523,13 @@ header('Content-Type: text/html;charset=utf-8');
   z-index: 10;
 }
 .fa {
-  padding-right: 5px;
-
+  padding: 3px 5px;
 }
+
+.fa-user-secret, .fa-info-circle {
+  color: #bbb;
+}
+
 </style>
 
 </head>
@@ -546,8 +550,8 @@ header('Content-Type: text/html;charset=utf-8');
 
 <div class="container-fluid">
 <div class="row">
-  <div class="col-md-3"></div>
-  <div class="col-md-6">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
 
     <h1><?php echo projectName(); ?> Backend</h1>
 
@@ -600,7 +604,7 @@ if ($iamadmin == 1) {
             <input type="hidden" name="<?php echo ini_get("session.upload_progress.name"); ?>" value="fileUpload">
             <fieldset>
               <div class="form-group">
-                <label for="inputFile" class="col-lg-3 control-label">File</label>
+	      <label for="inputFile" class="col-lg-3 control-label">File <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="Maximum allowed file size is <?php echo get_cfg_var("upload_max_filesize"); ?>"></i></label>
                 <div class="col-lg-9">
                   <input name="file" type="file" id="inputFile" />
                 </div>
@@ -620,7 +624,7 @@ if ($iamadmin == 1) {
               <div class="form-group">
                 <div class="col-lg-3 col-lg-offset-3">
                   <!--button type="submit" class="btn btn-default" id="cancelfileupload">Abbrechen</button-->
-                  <button type="submit" class="btn btn-primary" id="filesubmit" onClick="showProgressbar();">Upload</button>
+		  <button type="submit" class="btn btn-primary" id="filesubmit" onClick="showProgressbar();"><i class="fa fa-cloud-upload"></i> Upload</button>
                 </div>
 		<div class="col-lg-5 progressbarclass" style="display:none; margin-top:15px;">
                   <div class="progress progress-striped active">
@@ -680,9 +684,9 @@ if (!empty($result)) {
 			  }
 		echo " </td>
                 <td style=\"text-align:right\">
-                  <a href=\"?deletefile=" . $file['randname'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Delete file\"><i class=\"fa fa-trash-o\"></i></a>
-                  <a href=\"?plusfile=" . $file['randname'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Extend plus 30 days\"><i class=\"fa fa-plus-circle\"></i></a>
-                  <a href=\"?unlimitedfile=" . $file['randname'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Keep file forever\"><i class=\"fa fa-bookmark-o\"></i></a>
+                  <a href=\"?deletefile=" . $file['randname'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Delete file\" onClick=\"return confirm('Are you sure that you want to delete the file " . $file['filename'] . "')\"><i class=\"btn btn-danger fa fa-trash-o\"></i></a>
+                  <a href=\"?plusfile=" . $file['randname'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Extend plus 30 days\"><i class=\"btn btn-primary fa fa-plus-circle\"></i></a>
+                  <a href=\"?unlimitedfile=" . $file['randname'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Keep file forever\"><i class=\"btn btn-warning fa fa-calendar\"></i></a>
                 </td>
               </tr>";
 	}
@@ -737,19 +741,19 @@ if ($iamadmin == 1) {
 			// An admin user shall not be able to delete itself
 			if ($user['username'] != $_SERVER['PHP_AUTH_USER']) {
 				echo "
-                  <a href=\"?deleteuser=" . $user['username'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Delete user\"><i class=\"fa fa-trash-o\"></i></a>";
+                  <a href=\"?deleteuser=" . $user['username'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Delete user\" onClick=\"return confirm('Are you sure that you want to delete the user " . $user['username'] . "')\"><i class=\"btn btn-danger fa fa-trash-o\"></i></a>";
 			}
 	
 			// only show link to grant admin rights if user is no admin
 			if ($user['adminuser'] == 0) {
 				echo "
-                  <a href=\"?makeadminuser=" . $user['username'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Grant admin rights\"><i class=\"fa fa-graduation-cap\"></i></a>";
+                  <a href=\"?makeadminuser=" . $user['username'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Grant admin rights\"><i class=\"btn btn-warning fa fa-graduation-cap\"></i></a>";
 			}
 	
 			// only show link to remove admin rights if user _has_ admin rights and it's not the logged in user
 			if ($user['adminuser'] == 1 && $user['username'] != $_SERVER['PHP_AUTH_USER']) {
 				echo "
-                  <a href=\"?rmadminuser=" . $user['username'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Revoke admin rights\"><i class=\"fa fa-minus-circle\"></i></a>";
+                  <a href=\"?rmadminuser=" . $user['username'] . "\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Revoke admin rights\"><i class=\"btn btn-primary fa fa-minus-circle\"></i></a>";
 			}
 			echo "
                 </td>
@@ -875,7 +879,7 @@ if (!empty($result)) {
       </div>
     </div>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-2"></div>
   </div>
   </div>
 
