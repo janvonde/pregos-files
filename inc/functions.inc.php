@@ -61,7 +61,7 @@ function sendEmailNotification($file,$mailto) {
 		if(isset($_SERVER['HTTP_REFERER']) AND $_SERVER['HTTP_REFERER'] != "") {
 	                echo "    Referer:         " . $_SERVER['HTTP_REFERER'] . "\n";
 		}
-                echo "\n    Location:        http://www.infosniper.net/index.php?ip_address=" . $_SERVER['HTTP_X_FORWARDED_FOR'] . "\n\n";
+                echo "\n    Location:        https://www.iplocation.net/?query=" . $_SERVER['HTTP_X_FORWARDED_FOR'] . "\n\n";
         }
 
 
