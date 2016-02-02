@@ -115,6 +115,7 @@ header('Content-Type: text/html;charset=utf-8');
   </style>
 </head>
 
+
 <body>
 
 <nav class="navbar navbar-default">
@@ -128,7 +129,7 @@ header('Content-Type: text/html;charset=utf-8');
       </button>      
       <a class="navbar-brand" href="/"><?php echo $_SERVER['HTTP_HOST']; ?></a>
     </div>
-    <div aria-expanded="false" class="collapse navbar-collapse" id="navbarId">
+    <div aria-expanded="false" class="collapse navbar-collapse" id="navbarId" role="menu">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="upload.php">Login</a></li>
       </ul>
@@ -136,9 +137,11 @@ header('Content-Type: text/html;charset=utf-8');
   </div>
 </nav>
 
+
+
 <div class="container-fluid">
-<div class="row">
-  <div class="col-md-2"> </div>
+  <div class="row">
+    <div class="col-md-2"> </div>
     <div class="col-md-8">
 <?php
 // show error or success messages
@@ -164,25 +167,25 @@ if(isset($_SESSION['message']['type']) && $_SESSION['message']['type'] != "") {
 // show password form if needed
 if (isset($filename) && $password != "")  {
 ?>
-	<form enctype="multipart/form-data" method="post" action="/index.php" name="form1" id="form1" class="form-horizontal" autocomplete="off">
+        <form enctype="multipart/form-data" method="post" action="/index.php" name="form1" id="form1" class="form-horizontal" autocomplete="off">
           <input type="text" style="display:none" />
           <input type="password" style="display:none" />
           <input type="hidden" name="downloadfile" value="<?php echo $randname; ?>" />
-            <fieldset>
-              <legend>Password for <?php echo $filename; ?></legend>
-              <div class="form-group">
-                <label for="inputPassword" class="col-lg-4 control-label">Password</label>
-                <div class="col-lg-8">
-                  <input type="password" name="password" id="inputPassword" class="form-control" />
-                </div>
+          <fieldset>
+            <legend>Password for <?php echo $filename; ?></legend>
+            <div class="form-group">
+              <label for="inputPassword" class="col-lg-4 control-label">Password</label>
+              <div class="col-lg-8">
+                <input type="password" name="password" id="inputPassword" class="form-control" />
               </div>
-              <div class="form-group">
-                <div class="col-lg-8 col-lg-offset-4">
-                  <button type="submit" class="btn btn-primary" id="submit">Download</button>
-                </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-8 col-lg-offset-4">
+                <button type="submit" class="btn btn-primary" id="submit">Download</button>
               </div>
-            </fieldset>
-          </form>
+            </div>
+          </fieldset>
+        </form>
 <?php
 }
 
@@ -196,7 +199,7 @@ else {
     </div>
     <div class="col-md-2"> </div>
   </div>
-  </div>
-</body>
+</div>
 
+</body>
 </html>
