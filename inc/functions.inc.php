@@ -57,8 +57,10 @@ function sendEmailNotification($file,$mailto) {
                 echo "    Datum:           " . date("d.M Y G:i:s") . "\n";
                 echo "    IP-Adresse:      " . $_SERVER['HTTP_X_FORWARDED_FOR'] . "\n";
                 echo "    Provider:        " . gethostbyaddr($_SERVER['HTTP_X_FORWARDED_FOR']) . "\n";
-                echo "    Useragent:       " . $_SERVER['HTTP_USER_AGENT'] . "\n";
-                echo "    Referer:         " . $_SERVER['HTTP_REFERER'] . "\n\n";
+		echo "    Useragent:       " . $_SERVER['HTTP_USER_AGENT'] . "\n";
+		if(isset($_SERVER['HTTP_REFERER']) AND $_SERVER['HTTP_REFERER'] != "") {
+	                echo "    Referer:         " . $_SERVER['HTTP_REFERER'] . "\n\n";
+		}
                 echo "    Location:        http://www.infosniper.net/index.php?ip_address=" . $_SERVER['HTTP_X_FORWARDED_FOR'] . "\n\n";
         }
 
