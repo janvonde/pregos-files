@@ -57,10 +57,8 @@ function sendEmailNotification($file,$mailto) {
                 echo "    Datum:           " . date("d.M Y G:i:s") . "\n";
                 echo "    IP-Adresse:      " . $_SERVER['HTTP_X_FORWARDED_FOR'] . "\n";
                 echo "    Provider:        " . gethostbyaddr($_SERVER['HTTP_X_FORWARDED_FOR']) . "\n";
-		echo "    Useragent:       " . $_SERVER['HTTP_USER_AGENT'] . "\n";
-		if(isset($_SERVER['HTTP_REFERER']) AND $_SERVER['HTTP_REFERER'] != "") {
-	                echo "    Referer:         " . $_SERVER['HTTP_REFERER'] . "\n\n";
-		}
+                echo "    Useragent:       " . $_SERVER['HTTP_USER_AGENT'] . "\n";
+                echo "    Referer:         " . $_SERVER['HTTP_REFERER'] . "\n\n";
                 echo "    Location:        http://www.infosniper.net/index.php?ip_address=" . $_SERVER['HTTP_X_FORWARDED_FOR'] . "\n\n";
         }
 
@@ -92,8 +90,6 @@ function downloadFile($randname) {
 	$mailto = $result['email'];
 	
 
-	//countDownload($randname);
-
         $path = $conf['datadir'] . "/" . $randname;
 
  	$mm_type = "application/octet-stream";
@@ -112,44 +108,6 @@ function downloadFile($randname) {
 	sendEmailNotification($filename,$mailto);
 }
 
-
-
-function checkDbVersion() {
-	// wenn spalte nicht existiert == 1
-	// dann 3 spalten anlegen und dbversion auf 2 setzen
-
-}
-
-
-function countDownload($randname) {
-	$db = new PDO('sqlite:f2.sqlite');
-
-	// select current dlcount for this file
-	$stmt = $db->prepare("SELECT dlcount FROM files WHERE randname = :randname;");
-	$stmt->bindValue(':randname', $randname);
-	$stmt->execute();
-	$result = $stmt->fetch();
-	$currentdbcount = $result['dlcount'];
-
-
-	$newdlcount = $currentdbcount + 1;
-
-
-	// update database
-	$stmt = $db->prepare("UPDATE files SET dlcount = :newdlcount WHERE randname = :randname;");
-	$stmt->bindValue(':newdlcount', $newdlcount);
-	$stmt->bindValue(':randname', $randname);
-	$stmt->execute();
-
-//	include "../classes/CrawlerDetect.php";
-//	$CrawlerDetect = new CrawlerDetect;
-//	if($CrawlerDetect->isCrawler()) {
-//		echo "download ist crawler";
-//	}
-//	else {
-//		echo "normalo";
-//	}
-}
 
 
 // check if given password is valid
