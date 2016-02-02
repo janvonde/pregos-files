@@ -366,7 +366,7 @@ function getFaIcon($filename) {
         if ($ext == "php" OR $ext == "sh") {
                 $faIconClass = "fa-file-code-o";
         }
-        elseif ($ext == "mov" OR $ext == "mp3") {
+        elseif ($ext == "mov" OR $ext == "mp4") {
                 $faIconClass = "fa-file-video-o ";
         }
         elseif ($ext == "wav" OR $ext == "mp3") {
