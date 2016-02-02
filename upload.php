@@ -821,7 +821,7 @@ $result = $stmt->fetchAll();
             <thead>
               <tr>
                 <th>File</th>
-                <th>Valid until</th>
+                <th class="hidden-xs">Valid until</th>
                 <th>Owner</th>
               </tr>
             </thead>
@@ -832,14 +832,14 @@ if (!empty($result)) {
 	foreach ($result as $file) {
 		echo "
               <tr>
-	      <td> <i class=\"fa " . getFaIcon($file['filename']) . "\" style=\"display:table-cell;\"></i> <a style=\"display:table-cell;\" href=\"" . dirname(curPageUrl()) . "/" . $file['randname'] . "\" target=\"_blank\">" . $file['filename'] . "</a> <span style=\"display:table-cell; color:#bbb; padding-left:5px;\"> (" . human_filesize(filesize($conf['datadir'] . "/" . $file['randname'])) . ")</span>";
+	      <td> <i class=\"fa " . getFaIcon($file['filename']) . "\" style=\"display:table-cell;\"></i> <a style=\"display:table-cell;\" href=\"" . dirname(curPageUrl()) . "/" . $file['randname'] . "\" target=\"_blank\">" . $file['filename'] . "</a> <span style=\"display:table-cell; color:#bbb; padding-left:5px;\" class=\"hidden-xs\"> (" . human_filesize(filesize($conf['datadir'] . "/" . $file['randname'])) . ")</span>";
 	
 	        if ($file['password'] != '') {
 	                echo " &nbsp; <i class=\"fa fa-key\"> </i>";
 	        }
 	
 		echo "</td>
-                <td> ";
+                <td class=\"hidden-xs\"> ";
 		  	  if ($file['validuntil'] == 'unlimited') { 
 				echo 'unlimited'; 
 			  } 
