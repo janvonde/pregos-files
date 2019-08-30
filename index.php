@@ -98,10 +98,10 @@ header('Content-Type: text/html;charset=utf-8');
 <head>
   <title><?php echo projectName(); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha256-Whc+9091keLVBxbyK4U697hqB4bcED+6LC64E9GuJkk= sha512-9PPlANXApnRCz1LMx2LPWwRfOKkWjQvH98q2lkxEG6/r6YVoQ+F48btbiuOpDsWHjpZrCfcGrPoVenVl69V09A==" crossorigin="anonymous">
+  <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha256-Whc+9091keLVBxbyK4U697hqB4bcED+6LC64E9GuJkk= sha512-9PPlANXApnRCz1LMx2LPWwRfOKkWjQvH98q2lkxEG6/r6YVoQ+F48btbiuOpDsWHjpZrCfcGrPoVenVl69V09A==" crossorigin="anonymous">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 
   <style type="text/css">
